@@ -38,8 +38,9 @@ class UserByDepartmentAcron(generics.ListCreateAPIView):
     serializer_class = UserSerializer
 
     def get_queryset(self):
-        print(self.kwargs['post_id'])
-        queryset = user.objects.filter(department__acron_dep=self.kwargs['post_id'])
+        acron = self.request.query_params.get('post_id')
+
+        queryset = user.objects.filter(department__acron_dep=acron)
         return queryset
 
 # DEPARTMENT
@@ -53,7 +54,8 @@ class DepartmentByAcron(generics.ListCreateAPIView):
     serializer_class = DepartmentSerializer
 
     def get_queryset(self):
-        queryset = Department.objects.filter(acron_dep=self.kwargs['post_id'])
+        acron = self.request.query_params.get('post_id')
+        queryset = Department.objects.filter(acron_dep=acron)
         return queryset
 
 # SWITCH
