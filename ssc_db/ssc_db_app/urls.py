@@ -13,21 +13,21 @@ router = routers.DefaultRouter()
 # USER
 router.register('user', views.UserView)
 # USER BY DEPARTMENT CODE
-router.register(r'^user/dep/(?P<post_id>\w+)$', views.UserByDepartmentCode.as_view())
+router.register(r'^user/dep/(?P<post_id>\w+)$', views.UserByDepartmentAcron)
 
 # DEPARTMENT
 router.register('department', views.DepartmentView)
 # DEPARTMENT BY CODE
-router.register(r'^department/(?P<post_id>\w+)$', views.DepartmentByCode)
+router.register(r'^department/(?P<post_id>\w+)$', views.DepartmentByAcron)
 
 # SWITCH
 router.register('switch', views.SwitchView)
 # SWITCH BY CODE
-router.register(r'^switch/code/(?P<post_id>\w+)$', views.SwitchByCode)
+router.register(r'^switch/code/(?P<post_id>\w+)$', views.SwitchByIdentifier)
 # SWITCHES BY MODEL
 router.register(r'^switch/model/(?P<post_id>\w+)$', views.SwitchsByModel)
 # SWITCHES BY DEPARTMENT CODE
-router.register(r'^switch/dep/(?P<post_id>\w+)$', views.SwitchsByDepartmentCode)
+router.register(r'^switch/dep/(?P<post_id>\w+)$', views.SwitchsByDepartmentAcron)
 
 # PORTS
 router.register('port', views.PortView)

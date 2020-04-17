@@ -129,7 +129,10 @@ class VLANByPort(viewsets.ModelViewSet):
     queryset = VLAN.objects.all()
     serializer_class = VLANSerializer
     def get_queryset(self):
-        queryset = VLAN.objects.filter(port__=self.kwargs['post_id'])
+        # tenho umas duvidas aqui, by port ip address talvez pq by port tem de ir buscar
+        # o object inteiro
+        # TODO: Ignorar por enquanto
+        queryset = VLAN.objects.filter(port=self.kwargs['post_id'])
         return queryset
 
 # VLAN BY PORT BY SWITCH ID
