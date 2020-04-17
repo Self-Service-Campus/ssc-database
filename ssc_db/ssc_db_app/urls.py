@@ -6,13 +6,59 @@ from rest_framework import routers
 from . import views
 
 router = routers.DefaultRouter()
+# USER
 router.register('user', views.UserView)
+# USER BY DEPARTMENT CODE
+router.register(r'^user/dep/(?P<post_id>\w+)$', views.UserByDepartmentCode)
+
+# DEPARTMENT
 router.register('department', views.DepartmentView)
+# DEPARTMENT BY CODE
+router.register(r'^department/(?P<post_id>\w+)$', views.DepartmentByCode)
+
+# SWITCH
 router.register('switch', views.SwitchView)
+# SWITCH BY CODE
+router.register(r'^switch/code/(?P<post_id>\w+)$', views.SwitchByCode)
+# SWITCHES BY MODEL
+router.register(r'^switch/model/(?P<post_id>\w+)$', views.SwitchsByModel)
+# SWITCHES BY DEPARTMENT CODE
+router.register(r'^switch/dep/(?P<post_id>\w+)$', views.SwitchsByDepartmentCode)
+
+# PORTS
 router.register('port', views.PortView)
+# PORTS BY SWITCH IDENTIFIER
+router.register(r'^port/switch/(?P<post_id>\w+)$', views.PortBySwitchID)
+# PORTS BY STATE BY SWITCH ID
+router.register(r'^port/switch/(?P<post_id>\w+/state/(?P<post_id2>\w+)$', views.PortBySwtichIDByState)
+# PORTS BY IP ADDR
+router.register(r'^port/ip/(?P<post_id>\w+)$', views.PortByIPAddr)
+
+# VLAN
 router.register('vlan', views.VLANView)
+# VLAN BY ID
+router.register(r'vlan/id/(?P<post_id>\w+)$', views.VLANByID)
+# VLAN BY PORT
+router.register(r'vlan/port/(?P<post_id>\w+)$', views.VLANByPort)
+# VLAN BY PORT BY SWITCH ID
+router.register(r'^vlan/port/(?P<post_id>\w+/switch/(?P<post_id2>\w+)$', views.VLANByPortBySwitchID)
+
+# ACL
 router.register('acl', views.ACLView)
+# ACL BY ID
+router.register(r'acl/id/(?P<post_id>\w+)$', views.ACLByID)
+# ACL BY USRNAME
+router.register(r'acl/username/(?P<post_id>\w+)$', views.ACLByUserName)
+
+# AUDIT
 router.register('audit_log', views.Audit_LogView)
+# AUDIT BY ID
+router.register(r'audit/id/(?P<post_id>\w+)$', views.Audit_LogByID)
+# AUDIT BY ID
+router.register(r'audit/username/(?P<post_id>\w+)$', views.Audit_LogByID)
+
+
+
 
 
 urlpatterns = [
