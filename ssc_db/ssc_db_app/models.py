@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User as usr
 
-# Create your models here.
+
 class Department(models.Model):
 
     id_dep = models.AutoField(primary_key=True)
@@ -11,12 +11,14 @@ class Department(models.Model):
     def __str__(self):
         return f"Departamento {self.acron_dep}: {self.name_dep}, ID: {self.id_dep}"
 
+
 class User(models.Model):
     user = models.ForeignKey(usr, on_delete=models.CASCADE)
     department = models.OneToOneField(Department, on_delete=models.CASCADE) # tenho de adicionar alguma coisa on_delete?
 
     def __str__(self):
         return f"User {self.user}, dep: {self.department}"
+
 
 class Switch(models.Model):
     identifier_switch = models.CharField(max_length=100, primary_key=True)
@@ -54,6 +56,7 @@ class ACL(models.Model):
 
     def __str__(self):
         return f"ACL {self.id_acl}, ip: {self.access_flag_acl}, user: {self.user}"
+
 
 class Audit_Log(models.Model):
     id_audit = models.AutoField(primary_key=True)
