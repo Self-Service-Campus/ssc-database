@@ -153,12 +153,12 @@ class ACLByID(viewsets.ModelViewSet):
         queryset = ACL.objects.filter(id=self.kwargs['post_id'])
         return queryset
 
-# ACL BY USRNAME
-class ACLByUserName(viewsets.ModelViewSet):
+# ACL BY EMAIL
+class ACLByEmail(viewsets.ModelViewSet):
     queryset = ACL.objects.all()
     serializer_class = ACLSerializer
     def get_queryset(self):
-        queryset = ACL.objects.filter(user__user__username=self.kwargs['post_id'])
+        queryset = ACL.objects.filter(user__user__email=self.kwargs['post_id'])
         return queryset
 
 # AUDIT
@@ -174,10 +174,10 @@ class Audit_LogByID(viewsets.ModelViewSet):
         queryset = Audit_Log.objects.filter(id=self.kwargs['post_id'])
         return queryset
 
-# AUDIT BY USERNAME
-class Audit_LogByID(viewsets.ModelViewSet):
+# AUDIT BY EMAIL
+class Audit_LogByEmail(viewsets.ModelViewSet):
     queryset = Audit_Log.objects.all()
     serializer_class = Audit_LogSerializer
     def get_queryset(self):
-        queryset = Audit_Log.objects.filter(user__user__username=self.kwargs['post_id'])
+        queryset = Audit_Log.objects.filter(user__user__email=self.kwargs['post_id'])
         return queryset
