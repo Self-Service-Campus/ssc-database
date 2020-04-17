@@ -6,10 +6,10 @@ class Department(models.Model):
 
     id_dep = models.AutoField(primary_key=True)
     name_dep = models.CharField(max_length=150)
-    acro_dep = models.CharField(max_length=150)
+    acron_dep = models.CharField(max_length=150)
 
     def __str__(self):
-        return f"Departamento {self.acro_dep}: {self.name_dep}, ID: {self.id_dep}"
+        return f"Departamento {self.acron_dep}: {self.name_dep}, ID: {self.id_dep}"
 
 class User(models.Model):
     user = models.ForeignKey(usr, on_delete=models.CASCADE)

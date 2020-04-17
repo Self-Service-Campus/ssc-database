@@ -32,12 +32,12 @@ class UserView(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
-# USER BY DEPARTMENT CODE
-class UserByDepartmentCode(viewsets.ModelViewSet):
+# USER BY DEPARTMENT ACRON
+class UserByDepartmentAcron(viewsets.ModelViewSet):
     queryset = user.objects.all()
     serializer_class = UserSerializer
     def get_queryset(self):
-        queryset = user.objects.filter(department__code=self.kwargs['post_id'])
+        queryset = user.objects.filter(department__acron_dep=self.kwargs['post_id'])
         return queryset
 
 # DEPARTMENT
@@ -45,12 +45,12 @@ class DepartmentView(viewsets.ModelViewSet):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
 
-# DEPARTMENT BY CODE
-class DepartmentByCode(viewsets.ModelViewSet):
+# DEPARTMENT BY ACRON
+class DepartmentByAcron(viewsets.ModelViewSet):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
     def get_queryset(self):
-        queryset = Department.objects.filter(code=self.kwargs['post_id'])
+        queryset = Department.objects.filter(acron_dep=self.kwargs['post_id'])
         return queryset
 
 # SWITCH
@@ -59,11 +59,11 @@ class SwitchView(viewsets.ModelViewSet):
     serializer_class = SwitchSerializer
 
 # SWITCH BY CODE
-class SwitchByCode(viewsets.ModelViewSet):
+class SwitchByIdentifier(viewsets.ModelViewSet):
     queryset = Switch.objects.all()
     serializer_class = SwitchSerializer
     def get_queryset(self):
-        queryset = Switch.objects.filter(identifier=self.kwargs['post_id'])
+        queryset = Switch.objects.filter(identifier_switch=self.kwargs['post_id'])
         return queryset
 
 # SWITCHES BY MODEL
@@ -71,15 +71,15 @@ class SwitchsByModel(viewsets.ModelViewSet):
     queryset = Switch.objects.all()
     serializer_class = SwitchSerializer
     def get_queryset(self):
-        queryset = Switch.objects.filter(model=self.kwargs['post_id'])
+        queryset = Switch.objects.filter(model_switch=self.kwargs['post_id'])
         return queryset
 
-# SWITCHES BY DEPARTMENT CODE
-class SwitchsByDepartmentCode(viewsets.ModelViewSet):
+# SWITCHES BY DEPARTMENT ACRON
+class SwitchsByDepartmentAcron(viewsets.ModelViewSet):
     queryset = Switch.objects.all()
     serializer_class = SwitchSerializer
     def get_queryset(self):
-        queryset = Switch.objects.filter(department__code=self.kwargs['post_id'])
+        queryset = Switch.objects.filter(department__acron_dep=self.kwargs['post_id'])
         return queryset
 
 # PORT
@@ -108,7 +108,7 @@ class PortByIPAddr(viewsets.ModelViewSet):
     queryset = Port.objects.all()
     serializer_class = PortSerializer
     def get_queryset(self):
-        queryset = Port.objects.filter(ip_addr=self.kwargs['post_id'])
+        queryset = Port.objects.filter(ip_addr_port=self.kwargs['post_id'])
         return queryset
 
 # VLAN
@@ -121,7 +121,7 @@ class VLANByID(viewsets.ModelViewSet):
     queryset = VLAN.objects.all()
     serializer_class = VLANSerializer
     def get_queryset(self):
-        queryset = VLAN.objects.filter(identifier=self.kwargs['post_id'])
+        queryset = VLAN.objects.filter(identifier_vlan=self.kwargs['post_id'])
         return queryset
 
 # VLAN BY PORT
@@ -129,7 +129,7 @@ class VLANByPort(viewsets.ModelViewSet):
     queryset = VLAN.objects.all()
     serializer_class = VLANSerializer
     def get_queryset(self):
-        queryset = VLAN.objects.filter(port=self.kwargs['post_id'])
+        queryset = VLAN.objects.filter(port__=self.kwargs['post_id'])
         return queryset
 
 # VLAN BY PORT BY SWITCH ID
@@ -137,7 +137,7 @@ class VLANByPortBySwitchID(viewsets.ModelViewSet):
     queryset = VLAN.objects.all()
     serializer_class = VLANSerializer
     def get_queryset(self):
-        queryset = VLAN.objects.filter(port=self.kwargs['post_id'], port__switch_id=self.kwargs['post_id2'])
+        queryset = VLAN.objects.filter(port__number_port=self.kwargs['post_id'], port__identifier_switch=self.kwargs['post_id2'])
         return queryset
 
 # ACL
@@ -150,7 +150,7 @@ class ACLByID(viewsets.ModelViewSet):
     queryset = ACL.objects.all()
     serializer_class = ACLSerializer
     def get_queryset(self):
-        queryset = ACL.objects.filter(id=self.kwargs['post_id'])
+        queryset = ACL.objects.filter(id_acl=self.kwargs['post_id'])
         return queryset
 
 # ACL BY EMAIL
@@ -171,7 +171,7 @@ class Audit_LogByID(viewsets.ModelViewSet):
     queryset = Audit_Log.objects.all()
     serializer_class = Audit_LogSerializer
     def get_queryset(self):
-        queryset = Audit_Log.objects.filter(id=self.kwargs['post_id'])
+        queryset = Audit_Log.objects.filter(id_audit=self.kwargs['post_id'])
         return queryset
 
 # AUDIT BY EMAIL
