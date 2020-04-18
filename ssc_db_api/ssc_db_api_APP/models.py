@@ -43,6 +43,7 @@ class Port(models.Model):
 class VLAN(models.Model):
     identifier_vlan = models.IntegerField(primary_key=True)
     description_vlan = models.CharField(max_length=350)
+    # Port ou port__id?? a ver vamos
     port = models.ForeignKey(Port, on_delete=models.CASCADE) # on_delete?
 
     def __str__(self):
