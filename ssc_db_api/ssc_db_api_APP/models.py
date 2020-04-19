@@ -31,8 +31,9 @@ class Switch(models.Model):
 
 class Port(models.Model):
     id_port = models.AutoField(primary_key=True)
-    number_port = models.IntegerField()
-    ip_addr_port = models.GenericIPAddressField()
+    number_port = models.CharField(max_length=100)
+    name_port = models.CharField(max_length=100)
+    ip_addr_port = models.CharField(max_length=100)
     state_port = models.CharField(max_length=100)
     switch = models.ForeignKey(Switch, on_delete=models.CASCADE) # on_delete?
 
