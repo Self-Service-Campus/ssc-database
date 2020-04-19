@@ -1,5 +1,7 @@
 # database
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2b76aa6a97d747f9b39c3aa32d6316a7)](https://app.codacy.com/gh/Self-Service-Campus/ssc-database?utm_source=github.com&utm_medium=referral&utm_content=Self-Service-Campus/ssc-database&utm_campaign=Badge_Grade_Settings)
+
 ./manage.py graph_models -a --hide-edge-labels -o db_model.png
 
 ## How to install
