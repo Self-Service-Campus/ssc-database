@@ -15,17 +15,17 @@ class DepartmentSerializer(serializers.ModelSerializer):
 class SwitchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Switch
-        fields = ('identifier_switch', 'model_switch', 'department')
+        fields = ('id_switch', 'model_switch', 'department')
 
 class PortSerializer(serializers.ModelSerializer):
     class Meta:
         model = Port
-        fields = ('number_port', 'ip_addr_port', 'state_port', 'switch')
+        fields = ('id_port', 'number_port', 'name_port', 'state_port', 'switch')
 
 class VLANSerializer(serializers.ModelSerializer):
     class Meta:
         model = VLAN
-        fields = ('identifier_vlan', 'description_vlan', 'port')
+        fields = ('id_vlan', 'description_vlan', 'port')
 
 class ACLSerializer(serializers.ModelSerializer):
     class Meta:

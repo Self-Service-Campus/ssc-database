@@ -32,12 +32,11 @@ class Port(models.Model):
     id_port = models.CharField(primary_key=True, max_length=300)
     number_port = models.CharField(max_length=100)
     name_port = models.CharField(max_length=100)
-    ip_addr_port = models.CharField(max_length=100)
     state_port = models.CharField(max_length=100)
     switch = models.ForeignKey(Switch, on_delete=models.CASCADE) # on_delete?
 
     def __str__(self):
-        return f"Port {self.id_port}, number: {self.number_port}, name: {self.name_port}, IP ADDR: {self.ip_addr_port}, state: {self.state_port}, switch: {self.switch}"
+        return f"Port {self.id_port}, number: {self.number_port}, name: {self.name_port}, state: {self.state_port}, switch: {self.switch}"
 
 
 class VLAN(models.Model):
