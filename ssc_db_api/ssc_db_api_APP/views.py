@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import UserRegisterForm
 from django.views.decorators.csrf import csrf_protect
@@ -6,12 +7,20 @@ from rest_framework import viewsets, generics
 from rest_framework import permissions
 from django.contrib.auth.models import User
 from .models import User as user
-from .run import populate_db
+from .models import *
+from .run import *
 
 # Create your views here.
 def index(request):
-    populate_db()
     return render(request, 'index.html')
+
+def load_database(request):
+    populate_departments()
+    populate_switch01_b01()
+    populate_switch02_b01()
+    populate_switch01_b02()
+    html = "<html><body>DB Loaded.</body></html>"
+    return HttpResponse(html)
 
 @csrf_protect
 def register(request):

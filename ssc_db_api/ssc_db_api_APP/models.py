@@ -1,15 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User as usr
 
+# https://simpleisbetterthancomplex.com/tutorial/2016/07/26/how-to-reset-migrations.html
 
 class Department(models.Model):
-
-    id_dep = models.AutoField(primary_key=True)
+    acron_dep = models.CharField(primary_key=True, max_length=150, unique=True)
     name_dep = models.CharField(max_length=150)
-    acron_dep = models.CharField(max_length=150)
 
     def __str__(self):
-        return f"Departamento {self.acron_dep}: {self.name_dep}, ID: {self.id_dep}"
+        return f"Departamento {self.acron_dep}: {self.name_dep}"
 
 
 class User(models.Model):
@@ -21,16 +20,16 @@ class User(models.Model):
 
 
 class Switch(models.Model):
-    identifier_switch = models.CharField(max_length=100, primary_key=True)
+    id_switch = models.CharField(max_length=100, primary_key=True)
     model_switch = models.CharField(max_length=100)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"Switch {self.identifier_switch}, {self.model_switch}, dep: {self.department}"
+        return f"Switch {self.id_switch}, model: {self.model_switch}, dep: {self.department}"
 
 
 class Port(models.Model):
-    id_port = models.AutoField(primary_key=True)
+    id_port = models.CharField(primary_key=True, max_length=300)
     number_port = models.CharField(max_length=100)
     name_port = models.CharField(max_length=100)
     ip_addr_port = models.CharField(max_length=100)
@@ -38,18 +37,17 @@ class Port(models.Model):
     switch = models.ForeignKey(Switch, on_delete=models.CASCADE) # on_delete?
 
     def __str__(self):
-        return f"Port {self.number_port}, ip: {self.ip_addr_port}, state: {self.state_port}, ID: {self.id_port}, from: {self.switch}"
+        return f"Port {self.id_port}, number: {self.number_port}, name: {self.name_port}, IP ADDR: {self.ip_addr_port}, state: {self.state_port}, switch: {self.switch}"
 
 
 class VLAN(models.Model):
-    id_vlan = models.AutoField(primary_key=True)
-    identifier_vlan = models.IntegerField()
+    id_vlan = models.CharField(primary_key=True, max_length=300)
     description_vlan = models.CharField(max_length=350)
     # Port ou port__id?? a ver vamos
     port = models.ForeignKey(Port, on_delete=models.CASCADE) # on_delete?
 
     def __str__(self):
-        return f"VLAN {self.identifier_vlan}, {self.description_vlan}, port: {self.port}"
+        return f"VLAN {self.id_vlan}, description: {self.description_vlan}, port: {self.port}"
 
 
 class ACL(models.Model):
@@ -58,7 +56,7 @@ class ACL(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"ACL {self.id_acl}, ip: {self.access_flag_acl}, user: {self.user}"
+        return f"ACL {self.id_acl}, flag: {self.access_flag_acl}, user: {self.user}"
 
 
 class Audit_Log(models.Model):

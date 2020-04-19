@@ -11,6 +11,7 @@ schema_view = get_swagger_view(title="SSC API DOCUMENTATION")
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('load_db/', views.load_database, name='load_db'),
 
     # AUTH VIEWS
     path('register/', views.register, name='register'),
