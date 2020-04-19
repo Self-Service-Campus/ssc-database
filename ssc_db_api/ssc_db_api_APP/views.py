@@ -22,6 +22,17 @@ def load_database(request):
     html = "<html><body>DB Loaded.</body></html>"
     return HttpResponse(html)
 
+def clean_database(request):
+    Department.objects.all().delete()
+    User.objects.all().delete()
+    Switch.objects.all().delete()
+    Port.objects.all().delete()
+    VLAN.objects.all().delete()
+    ACL.objects.all().delete()
+    Audit_Log.objects.all().delete()
+    html = "<html><body>DB Cleaned.</body></html>"
+    return HttpResponse(html)
+
 @csrf_protect
 def register(request):
     if request.method == 'POST':

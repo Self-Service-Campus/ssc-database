@@ -12,7 +12,8 @@ Make sure you are running Python 3.5.
 
 `$ source ./venv/bin/activate`
 
-## How to clean the database
+
+## How to delete the database (tables & data)
 
 `find . -path "*/migrations/*.py" -not -name "__init__.py" -delete`
 
@@ -22,7 +23,7 @@ DELETE DB.SQLITE3
 
 `python3 manage.py makemigrations`
 
-`python3 manage.py makemigrations ssc_db_api_APP`
+`python3 manage.py makemigrations ssc_django_app`
 
 `python3 manage.py migrate`
 
@@ -31,3 +32,9 @@ DELETE DB.SQLITE3
 ## How to load the database
 
 www.localhost:8080/load_db/
+
+## How to truncate the database
+
+It maintains the tables but clean all the entries 
+
+www.localhost:8080/clean_db/

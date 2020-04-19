@@ -10,8 +10,14 @@ from rest_framework_swagger.views import get_swagger_view
 schema_view = get_swagger_view(title="SSC API DOCUMENTATION")
 
 urlpatterns = [
+    
     path('', views.index, name='index'),
+        
+    # DATABASE
     path('load_db/', views.load_database, name='load_db'),
+    path('clean_db/', views.clean_database, name='clean_db'),
+
+    # API URLS
     path('', include('ssc_db_api_APP.api.urls_api')),
 
     # AUTH VIEWS

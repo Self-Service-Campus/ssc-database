@@ -1,8 +1,8 @@
-from ssc_db_api_APP.serializers import *
+from ..serializers import *
 from rest_framework import generics
-from ssc_db_api_APP.models import User as user
-from ssc_db_api_APP.models import *
-from ssc_db_api_APP.run import *
+from ..models import User as user
+from ..models import *
+from ..run import *
 
 
 # ----- REST FRAMEWORK -----
