@@ -6,9 +6,11 @@ from rest_framework import viewsets, generics
 from rest_framework import permissions
 from django.contrib.auth.models import User
 from .models import User as user
+from .run import populate_db
 
 # Create your views here.
 def index(request):
+    populate_db()
     return render(request, 'index.html')
 
 @csrf_protect
