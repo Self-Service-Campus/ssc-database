@@ -8,7 +8,7 @@ class Department(models.Model):
     name_dep = models.CharField(max_length=150)
 
     def __str__(self):
-        return f"Departamento {self.acron_dep}: {self.name_dep}"
+        return f"{self.acron_dep} - {self.name_dep}"
 
 
 class User(models.Model):
@@ -21,6 +21,7 @@ class User(models.Model):
 
 class Switch(models.Model):
     id_switch = models.CharField(max_length=100, primary_key=True)
+    ip_switch = models.CharField(max_length=100)
     model_switch = models.CharField(max_length=100)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
 
@@ -62,6 +63,7 @@ class Audit_Log(models.Model):
     id_audit = models.AutoField(primary_key=True)
     action_audit = models.CharField(max_length=350) # Descreve oq aconteceu
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return f"Audit {self.id_audit}: {self.action_audit}, by: {self.user}"
+        return f"Audit {self.id_audit}: {self.action_audit}, by: {self.user}, date: {self.date}"
